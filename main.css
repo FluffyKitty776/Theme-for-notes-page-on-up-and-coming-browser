@@ -1,9 +1,3 @@
-/*
- * Author: FluffyKitty776
- * License: TBD
- * Note: Please do not redistruibute this code without explicit premission from the author...
- * License has yet to be determined at this time, it may be relesed under MIT or GPLv3 in the near future...
- */
 @font-face {
     font-family: "Kagi";
     src: url("https://assets.kagi.com/fonts/lufga/lufga-regular-webfont.woff2");
@@ -256,11 +250,6 @@ section.main .markdown-body-container, section.main textarea {
     font-style: italic;
 }
 
-section.main .markdown-body-container {
-    padding-bottom: 40pt;
-    padding-top: 40pt;
-}
-
 section.main .markdown-body-container, section.main textarea {
     max-width: 2500pt;
     width: 90vw;
@@ -278,18 +267,22 @@ section.main:after {
     top: 10vh !important;
     left: calc(100vw - 26%) !important;
     background: url("https://assets.kagi.com/img/about_page/boost-icons.png?v=d5dafde14251fd8b202e221f098da590d5faee52") 0px 0 no-repeat;
-background-size : 1050% 200%;
+    background-size : 1050% 200%;
 
     z-index: -997 !important;
     filter: blur(6pt);
 }
 
-.markdown-body-container {
+.markdown-body-container, textarea.theme-color {
     background-color: rgba(240, 240, 240, 0.6) !important;
     border-top-left-radius: 12pt !important;
     border-top-right-radius: 12pt !important;
     border: 2pt solid rgba(0, 0, 0, .6) !important;
 }
+textarea.theme-color {
+    padding-top: 2em !important;
+}
+
 
 * {
     font-family: "Kagi";
