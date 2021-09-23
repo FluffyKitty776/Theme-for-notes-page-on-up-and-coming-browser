@@ -18,7 +18,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 USA
 
 # Theme-for-notes-page-on-up-and-coming-browser
+
 This is a theme for a notes page in an up and coming browser.
+
 Usage
 --
 In the browser open the preferences, in there select New Tab Page Opens With, and in the drop down choose notes
