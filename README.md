@@ -42,7 +42,7 @@ TODO
 [ ] Update screenshots
 [ ] Add alternate color choices
 [ ] Fix the jank going on in the settings menu (Probibly easy:)
---
+
 Contributing
 -- 
 If you are a Web Developer and you are wanting to, contributions are welcome right now, just be aware that if you submit a pull request it may take a while for me to review it. 
