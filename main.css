@@ -40,7 +40,7 @@ body {
     /* Sets the Kagi font on all pages */
     font-family: "Kagi";
     /* Sets the colour of all text to black */
-    color: black
+    color: white;
 }
 
 section.history.nodisplay,
@@ -49,7 +49,7 @@ section.settings.nodisplay {
      * so that when the page loads we do not see the History and Settings modal until the user selects 
      * the button 
      */
-    visibility: none;
+    visibility: hidden;
     opacity: 0;
 }
 
@@ -60,17 +60,9 @@ section.settings.nodisplay {
 }
 
 section.main.blur {
-    /* Blur the background behind any modals*/
-    filter: blur(3px);
-    user-select: none;
-    -webkit-filter: blur(3px);
-}
-
-section.main.blur {
     /* When the modal is open we want the section.main to blur */
     filter: blur(3px);
     user-select: none;
-    -webkit-filter: ;
 }
 
 .button {
@@ -89,12 +81,6 @@ section.main.blur {
     border-radius: 8pt;
 }
 
-section.history,
-section.settings {
-    /* Adds a 12 point border radius to the .history and .settings modals */
-    border-radius: 12pt;
-}
-
 .button,
 button,
 .close {
@@ -102,10 +88,14 @@ button,
     border-radius: 12pt;
 }
 
-section.history .header .close:hover,
-section.settings .header .close:hover {
+section.history .header .close:focus,
+section.settings .header .close:focus {
     /* Here I remove the default Outline around the close button in some modal windows */
     outline: none;
+}
+
+section.history .header .close:hover,
+section.settings .header .close:hover {
     /* Add a background colour */
     background-color: #aaaaaa;
     /* and a border radius */
@@ -114,28 +104,34 @@ section.settings .header .close:hover {
 
 section.history,
 section.settings {
+    border-radius: 12pt;
     /* I like partly transparent modals, so here I have the background set to black with 60% opacity */
+    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, .6);
     /* And a text colour of white for contrast */
     color: white;
+    /* 
+     * Here I am setting the settings and history modals to be a little bit larger than the default, 
+     * as I feel like this space is more effectivly being utilized if done
+     */
+    max-height: 90vh;
+    max-width: 2800px;
+    width: 99%;
+    /* Add a border around the modal */
+    border: 1px solid;
+    /* This just pushes the modal slightly away from the top, this gives some breathing room :) */
+    position: absolute;
+    top: 2vh;
 }
 
 section.settings:not(.nodisplay),
 section.history:not(.nodisplay) {
     transition: opacity .8s;
-    -webkit-transition: opacity .8s;
-    -moz-transition: opacity .8s;
-    -ms-transition: opacity .8s;
-    -o-transition: opacity .8s;
 }
 
 section.settings:is(.nodisplay),
 section.history:is(.nodisplay) {
     transition: opacity .2s;
-    -webkit-transition: opacity .2s;
-    -moz-transition: opacity .2s;
-    -ms-transition: opacity .2s;
-    -o-transition: opacity .2s;
 }
 
 section.settings .item.customCss input {
@@ -145,9 +141,11 @@ section.settings .item.customCss input {
 
 section.settings .item.customCss textarea {
     /* Set the background colour of the textarea element in the settings to be black with an opacity of 10% */
+    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, .1);
     /* Border radius to 12 point :) */
     border-radius: 12pt;
+    height: 20rem
 }
 
 section.settings .item .switch .box {
@@ -170,47 +168,31 @@ section.bar .button {
 }
 
 .nodisplay {
+    /* Hide any elemnt with the class nodisplay */
     visibility: hidden;
-    opacity: 1;
     pointer-events: none;
 }
 
 section.settings .item.customCss input[type=submit]:hover {
+    /* Add a nice hover animation to the submit button in settings */
+    background-color: rgb(60, 200, 97);
     background-color: rgba(60, 200, 97, .4);
 }
 
 section.settings .item.customCss input[type=submit].saved {
-    border-color: white;
+    /* Once save is pressed change the background to a solid green */
     background-color: hsl(136, 56%, 51%);
+    border-color: white;
 }
 
 section.settings .item.customCss textarea {
+    /* This is just to make the text area larger, the default size is a but small for my likes */
     height: 20rem;
-}
-
-section.history,
-section.settings {
-    max-height: 90vh;
-    max-width: 2800px;
-    width: 99%;
-    border: 1px solid;
-    position: absolute;
-    top: 2vh;
-}
-
-.body,
-.main,
-body.light .theme-color-light,
-.theme-border-light,
-.header,
-.theme-color,
-section.settings .item.customCss input,
-section.history .list>p {
-    color: white;
 }
 
 body.dark ::selection,
 body.light ::selection {
+    background: rgb(60, 200, 97);
     background: rgba(60, 200, 97, .4);
     color: #000
 }
@@ -357,6 +339,25 @@ section.main textarea {
     padding-bottom: 4em;
 }
 
+.markdown-body-container,
+textarea.theme-color {
+    background-color: rgb(240, 240, 240) !important;
+    background-color: rgba(240, 240, 240, 0.6) !important;
+    border-top-left-radius: 12pt !important;
+    border-top-right-radius: 12pt !important;
+    border: 2pt solid rgb(0, 0, 0) !important;
+    border: 2pt solid rgba(0, 0, 0, .6) !important;
+}
+
+textarea.theme-color {
+    padding-top: 2em !important;
+}
+
+section.main .markdown-body-container {
+    position: relative !important;
+    top: 40pt !important;
+}
+
 section.main:after {
     display: block !important;
     content: "" !important;
@@ -371,27 +372,22 @@ section.main:after {
     filter: blur(6pt);
 }
 
-.markdown-body-container,
-textarea.theme-color {
-    background-color: rgba(240, 240, 240, 0.6) !important;
-    border-top-left-radius: 12pt !important;
-    border-top-right-radius: 12pt !important;
-    border: 2pt solid rgba(0, 0, 0, .6) !important;
-}
-
-textarea.theme-color {
-    padding-top: 2em !important;
-}
-
-section.main .markdown-body-container {
-    position: relative !important;
-    top: 40pt !important;
-}
-
-body.light {
-    color: black !important;
-}
-
 body.light .button:hover {
+    /* Set the outline colour to white on hover of .button */
     outline-color: #fff;
+}
+
+.theme-color,
+.theme-color-light {
+    /* Set the text colour to white */
+    color: white !important;
+}
+
+section.main>div.markdown-body-container div.markdown-body,
+div.flex>div.modes>button,
+div.flex>section.flex>textarea.theme-color,
+select.theme-border,
+textarea.theme-border {
+    /* For very specific elements I need the text colour to be black */
+    color: black !important;
 }
