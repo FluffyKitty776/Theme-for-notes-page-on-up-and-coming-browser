@@ -17,112 +17,152 @@
  * USA
  */
 
+
+/* Declares the font-family Kagi for later use :) */
+
 @font-face {
     font-family: "Kagi";
     src: url("https://assets.kagi.com/fonts/lufga/lufga-regular-webfont.woff2");
 }
 
-section.history.nodisplay, section.settings.nodisplay {
+
+/*
+ * I know usage of this selector should be limited, BUT
+ * I do not want to manualy define everything that needs to be changed
+ */
+
+* {
+    color: inherit;
+    font-family: inherit;
+}
+
+body {
+    /* Sets the Kagi font on all pages */
+    font-family: "Kagi";
+    /* Sets the colour of all text to black */
+    color: black
+}
+
+section.history.nodisplay,
+section.settings.nodisplay {
+    /* Here I initally hide section.history.nodisplay as well as section.settings.nodisplay, 
+     * so that when the page loads we do not see the History and Settings modal until the user selects 
+     * the button 
+     */
     visibility: none;
     opacity: 0;
 }
 
-.theme-bg, .theme-bg {
+.theme-bg,
+.theme-bg {
+    /* Sets the background color of the page to a nice white colour */
     background-color: rgb(238, 235, 243);
 }
 
-.button:hover {
-    border-radius: 12pt;
-    outline-color: #000
+section.main.blur {
+    /* Blur the background behind any modals*/
+    filter: blur(3px);
+    user-select: none;
+    -webkit-filter: blur(3px);
 }
 
 section.main.blur {
-    filter: blur(3px);
-    user-select: none
-}
-
-.button {
-    cursor: pointer;
-    user-select: none;
-}
-
-.button {
-    cursor: pointer;
-    padding: 10px;
-    font-family: monospace
-}
-
-section.main.blur {
+    /* When the modal is open we want the section.main to blur */
     filter: blur(3px);
     user-select: none;
+    -webkit-filter: ;
 }
 
 .button {
+    /* Changes the mouse pointer on .button so that it behaves similarly to a hyperlink */
     cursor: pointer;
+    user-select: none;
+    /* Add 10px of padding */
     padding: 10px;
-    font-family: monospace
+    /* Use a monospace font here */
+    font-family: monospace;
 }
 
 .button:hover {
+    /* Here I am setting the outline colour of the buttons to black on hover */
     outline: 1px solid;
     border-radius: 8pt;
 }
 
-section.history, section.settings {
-    border-radius: 12pt;
-}
-
-.button, button, .close {
-    border-radius: 12pt;
-}
-
-section.history .header .close:hover, section.settings .header .close:hover {
-    outline: 1px solid;
-    border-radius: 12pt;
-}
-
-section.history {
-    background-color: rgba(0, 0, 0, .6);
-    color: white;
-}
-
+section.history,
 section.settings {
-    color: white;
+    /* Adds a 12 point border radius to the .history and .settings modals */
+    border-radius: 12pt;
+}
+
+.button,
+button,
+.close {
+    /* Set the border radius */
+    border-radius: 12pt;
+}
+
+section.history .header .close:hover,
+section.settings .header .close:hover {
+    /* Here I remove the default Outline around the close button in some modal windows */
+    outline: none;
+    /* Add a background colour */
+    background-color: #aaaaaa;
+    /* and a border radius */
+    border-radius: 12pt;
+}
+
+section.history,
+section.settings {
+    /* I like partly transparent modals, so here I have the background set to black with 60% opacity */
     background-color: rgba(0, 0, 0, .6);
-}
-
-section.settings:not(.nodisplay), section.history:not(.nodisplay) {
-    transition: opacity .8s;
-}
-
-section.settings:is(.nodisplay), section.history:is(.nodisplay) {
-    transition: opacity .2s;
-}
-
-.body, .main, body.light .theme-color-light, .theme-border-light, .header, .theme-color, section.settings .item.customCss input {
+    /* And a text colour of white for contrast */
     color: white;
+}
+
+section.settings:not(.nodisplay),
+section.history:not(.nodisplay) {
+    transition: opacity .8s;
+    -webkit-transition: opacity .8s;
+    -moz-transition: opacity .8s;
+    -ms-transition: opacity .8s;
+    -o-transition: opacity .8s;
+}
+
+section.settings:is(.nodisplay),
+section.history:is(.nodisplay) {
+    transition: opacity .2s;
+    -webkit-transition: opacity .2s;
+    -moz-transition: opacity .2s;
+    -ms-transition: opacity .2s;
+    -o-transition: opacity .2s;
 }
 
 section.settings .item.customCss input {
+    /* Sets the border radius of input fields to be 8 points */
     border-radius: 8pt;
 }
 
 section.settings .item.customCss textarea {
+    /* Set the background colour of the textarea element in the settings to be black with an opacity of 10% */
     background-color: rgba(0, 0, 0, .1);
-    color: white;
+    /* Border radius to 12 point :) */
     border-radius: 12pt;
 }
 
 section.settings .item .switch .box {
+    /* This sets the background colour as well as the border colour of the check-box in settings to be white */
     background-color: white;
     border-color: white;
 }
 
 section.bar .button {
+    /* Invert the colour of the button in the bottom bar. This helps to fix one issue if Dark Theme is choosen... */
     filter: invert();
 }
 
 .flex {
+    /* Set .flex to be visible and centred */
     visibility: visible;
     display: flex;
     align-items: center;
@@ -148,7 +188,8 @@ section.settings .item.customCss textarea {
     height: 20rem;
 }
 
-section.history, section.settings {
+section.history,
+section.settings {
     max-height: 90vh;
     max-width: 2800px;
     width: 99%;
@@ -157,11 +198,19 @@ section.history, section.settings {
     top: 2vh;
 }
 
-.body, .main, body.light .theme-color-light, .theme-border-light, .header, .theme-color, section.settings .item.customCss input, section.history .list>p {
+.body,
+.main,
+body.light .theme-color-light,
+.theme-border-light,
+.header,
+.theme-color,
+section.settings .item.customCss input,
+section.history .list>p {
     color: white;
 }
 
-body.dark ::selection, body.light ::selection {
+body.dark ::selection,
+body.light ::selection {
     background: rgba(60, 200, 97, .4);
     color: #000
 }
@@ -170,10 +219,6 @@ section.bar #lastEdited {
     border-bottom-right-radius: 8pt;
     border-top-right-radius: 8pt;
     background-color: lightblue;
-}
-
-section.main .markdown-body-container, section.main textarea {
-    padding: 0;
 }
 
 .markdown-body h1 {
@@ -289,7 +334,8 @@ section.main .markdown-body-container, section.main textarea {
     text-align: center;
 }
 
-.markdown-body li ol, .markdown-body li ul {
+.markdown-body li ol,
+.markdown-body li ul {
     margin-top: 6px;
 }
 
@@ -301,10 +347,12 @@ section.main .markdown-body-container, section.main textarea {
     font-style: italic;
 }
 
-section.main .markdown-body-container, section.main textarea {
+section.main .markdown-body-container,
+section.main textarea {
     max-width: 2500pt;
     width: 90vw;
     margin: 3em;
+    padding: 0;
     padding-left: 3em;
     padding-bottom: 4em;
 }
@@ -323,7 +371,8 @@ section.main:after {
     filter: blur(6pt);
 }
 
-.markdown-body-container, textarea.theme-color {
+.markdown-body-container,
+textarea.theme-color {
     background-color: rgba(240, 240, 240, 0.6) !important;
     border-top-left-radius: 12pt !important;
     border-top-right-radius: 12pt !important;
@@ -339,8 +388,8 @@ section.main .markdown-body-container {
     top: 40pt !important;
 }
 
-* {
-    font-family: "Kagi";
+body.light {
+    color: black !important;
 }
 
 body.light .button:hover {
