@@ -30,3 +30,21 @@ Screenshots
 --
 ![](Screenshot1.png)
 ![](Screenshot2.png)
+
+TODO
+--
+[ ] Clean up the code
+[ ] Add mixins for the headings
+[ ] Add support a dark theme
+[ ] Add more hover animations
+[ ] Move all colors to _colors.scss
+[ ] Move all variables to _variables.scss
+[ ] Update screenshots
+[ ] Add alternate color choices
+[ ] Fix the jank going on in the settings menu (Probibly easy:)
+--
+Contributing
+-- 
+If you are a Web Developer and you are wanting to, contributions are welcome right now, just be aware that if you submit a pull request it may take a while for me to review it. 
+Forks of this project are encouraged. 
+The full release may come with the release of "The Browser With Notes" or if that does not happen in a few years I may change this to a theme for somthing else with similar functionality? I don't know yet. :)
