@@ -33,15 +33,15 @@ Screenshots
 
 TODO
 --
-[ ] Clean up the code
-[ ] Add mixins for the headings
-[ ] Add support a dark theme
-[ ] Add more hover animations
-[ ] Move all colors to _colors.scss
-[ ] Move all variables to _variables.scss
-[ ] Update screenshots
-[ ] Add alternate color choices
-[ ] Fix the jank going on in the settings menu (Probibly easy:)
+- [ ] Clean up the code
+- [ ] Add mixins for the headings
+- [ ] Add support a dark theme
+- [ ] Add more hover animations
+- [ ] Move all colors to _colors.scss
+- [ ] Move all variables to _variables.scss
+- [ ] Update screenshots
+- [ ] Add alternate color choices
+- [ ] Fix the jank going on in the settings menu (Probibly easy:)
 
 Contributing
 -- 
