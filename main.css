@@ -16,9 +16,15 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
  * USA
  */
+
 @font-face {
     font-family: "Kagi";
     src: url("https://assets.kagi.com/fonts/lufga/lufga-regular-webfont.woff2");
+}
+
+section.history.nodisplay, section.settings.nodisplay {
+    visibility: none;
+    opacity: 0;
 }
 
 .theme-bg, .theme-bg {
@@ -33,6 +39,22 @@
 section.main.blur {
     filter: blur(3px);
     user-select: none
+}
+
+.button {
+    cursor: pointer;
+    user-select: none;
+}
+
+.button {
+    cursor: pointer;
+    padding: 10px;
+    font-family: monospace
+}
+
+section.main.blur {
+    filter: blur(3px);
+    user-select: none;
 }
 
 .button {
@@ -69,6 +91,14 @@ section.settings {
     background-color: rgba(0, 0, 0, .6);
 }
 
+section.settings:not(.nodisplay), section.history:not(.nodisplay) {
+    transition: opacity .8s;
+}
+
+section.settings:is(.nodisplay), section.history:is(.nodisplay) {
+    transition: opacity .2s;
+}
+
 .body, .main, body.light .theme-color-light, .theme-border-light, .header, .theme-color, section.settings .item.customCss input {
     color: white;
 }
@@ -93,13 +123,16 @@ section.bar .button {
 }
 
 .flex {
+    visibility: visible;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .nodisplay {
-    display: none;
+    visibility: hidden;
+    opacity: 1;
+    pointer-events: none;
 }
 
 section.settings .item.customCss input[type=submit]:hover {
@@ -285,8 +318,7 @@ section.main:after {
     top: 10vh !important;
     left: calc(100vw - 26%) !important;
     background: url("https://assets.kagi.com/img/about_page/boost-icons.png?v=d5dafde14251fd8b202e221f098da590d5faee52") 0px 0 no-repeat;
-    background-size : 1050% 200%;
-
+    background-size: 1050% 200%;
     z-index: -997 !important;
     filter: blur(6pt);
 }
@@ -297,12 +329,20 @@ section.main:after {
     border-top-right-radius: 12pt !important;
     border: 2pt solid rgba(0, 0, 0, .6) !important;
 }
+
 textarea.theme-color {
     padding-top: 2em !important;
 }
 
+section.main .markdown-body-container {
+    position: relative !important;
+    top: 40pt !important;
+}
 
 * {
     font-family: "Kagi";
 }
 
+body.light .button:hover {
+    outline-color: #fff;
+}
