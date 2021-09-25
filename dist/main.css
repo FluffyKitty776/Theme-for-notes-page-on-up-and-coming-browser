@@ -22,7 +22,6 @@
   font-family: "Kagi";
   src: url("https://assets.kagi.com/fonts/lufga/lufga-regular-webfont.woff2");
 }
-
 :root {
   --text-color-primary: black;
   --text-color-secondary: white;
@@ -49,9 +48,9 @@ body {
 section.history.nodisplay,
 section.settings.nodisplay {
   /* Here I initally hide section.history.nodisplay as well as section.settings.nodisplay, 
-     * so that when the page loads we do not see the History and Settings modal until the user selects 
-     * the button 
-     */
+   * so that when the page loads we do not see the History and Settings modal until the user selects 
+   * the button 
+   */
   visibility: hidden;
   opacity: 0;
 }
@@ -115,9 +114,9 @@ section.settings {
   /* And a text colour of white for contrast */
   color: white;
   /* 
-     * Here I am setting the settings and history modals to be a little bit larger than the default, 
-     * as I feel like this space is more effectivly being utilized if done
-     */
+   * Here I am setting the settings and history modals to be a little bit larger than the default, 
+   * as I feel like this space is more effectivly being utilized if done
+   */
   max-height: 90vh;
   max-width: 2800px;
   width: 99%;
@@ -130,12 +129,12 @@ section.settings {
 
 section.settings:not(.nodisplay),
 section.history:not(.nodisplay) {
-  transition: opacity .8s;
+  transition: opacity 0.8s;
 }
 
 section.settings:is(.nodisplay),
 section.history:is(.nodisplay) {
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 section.settings .item.customCss input {
@@ -261,14 +260,14 @@ section.bar #lastEdited {
 }
 
 .markdown-body p {
-  margin-bottom: .2rem;
+  margin-bottom: 0.2rem;
 }
 
 .markdown-body blockquote {
   background: #f9f9f9;
   border-left: 8px solid #aaaaaa;
   margin: 1.5em 10px;
-  padding: .5em 10px;
+  padding: 0.5em 10px;
   quotes: "“" "”" "‘" "’";
 }
 
@@ -276,9 +275,9 @@ section.bar #lastEdited {
   color: #ccc;
   content: open-quote;
   font-size: 4em;
-  line-height: .1em;
-  margin-right: .1em;
-  vertical-align: -.4em;
+  line-height: 0.1em;
+  margin-right: 0.1em;
+  vertical-align: -0.4em;
 }
 
 .markdown-body blockquote p {
@@ -312,7 +311,7 @@ section.bar #lastEdited {
   box-sizing: border-box;
   width: 2em;
   /* Some space between the number and the content in browsers that support
-       generated content but not positioning it (Camino 2 is one example) */
+     generated content but not positioning it (Camino 2 is one example) */
   margin-right: 8px;
   padding: 4px;
   color: black;
