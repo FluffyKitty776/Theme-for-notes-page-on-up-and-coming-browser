@@ -1,22 +1,21 @@
 @charset "UTF-8";
 /* 
-* Copyright (C) 2021  FluffyKitty776
-* 
-* This library is free software; you can redistribute it and/or
-* modify it under the terms of the GNU Lesser General Public
-* License as published by the Free Software Foundation; either
-* version 2.1 of the License, or (at your option) any later version.
-* 
-* This library is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* Lesser General Public License for more details.
-* 
-* You should have received a copy of the GNU Lesser General Public
-* License along with this library; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
-* USA
-*/
+ * Copyright (C) 2021  FluffyKitty776
+ * 
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,  * USA.
+ */
 /* Declares the font-family Kagi for later use :) */
 @font-face {
   font-family: "Kagi";
@@ -79,9 +78,9 @@ section.settings {
   /* And a text colour of white for contrast */
   color: var(--text-color-dark);
   /* 
-  * Here I am setting the settings and history modals to be a little bit larger than the default, 
-  * as I feel like this space is more effectivly being utilized if done
-  */
+   * Here I am setting the settings and history modals to be a little bit larger than the default, 
+   * as I feel like this space is more effectivly being utilized if done
+   */
   max-height: 90vh;
   max-width: 2800px;
   width: 99%;
@@ -94,9 +93,9 @@ section.settings {
 section.history.nodisplay,
 section.settings.nodisplay {
   /* Here I initally hide section.history.nodisplay as well as section.settings.nodisplay, 
-  * so that when the page loads we do not see the History and Settings modal until the user selects 
-  * the button 
-  */
+   * so that when the page loads we do not see the History and Settings modal until the user selects 
+   * the button 
+   */
   visibility: hidden;
   opacity: 0;
 }

@@ -1,399 +1,402 @@
-    /* 
+/* 
  * Copyright (C) 2021  FluffyKitty776
  * 
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
  * 
- * This library is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  * 
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
- * USA
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,  * USA.
  */
-    /* Declares the font-family Kagi for later use :) */
-    
-    @font-face {
-        font-family: "Kagi";
-        src: url("https://assets.kagi.com/fonts/lufga/lufga-regular-webfont.woff2");
-    }
-    
-    @import "_colors";
-    @import "_variables";
-    * {
-        color: inherit;
-        font-family: inherit;
-    }
-    
-    body {
-        /* Sets the Kagi font on all pages */
-        font-family: "Kagi";
-        /* Sets the colour of all text to black */
-        color: white;
-    }
-    
-    section.history,
-    section.settings {
-        border-radius: var(--border-radius);
-        /* I like partly transparent modals, so here I have the background set to black with 60% opacity */
-        background-color: var(--body-bg-color-dark);
-        background-color: rgba(41, 41, 41, .6);
-        /* And a text colour of white for contrast */
-        color: var(--text-color-dark);
-        /* 
+
+
+/* Declares the font-family Kagi for later use :) */
+
+@font-face {
+    font-family: "Kagi";
+    src: url("https://assets.kagi.com/fonts/lufga/lufga-regular-webfont.woff2");
+}
+
+@import "_colors";
+@import "_variables";
+* {
+    color: inherit;
+    font-family: inherit;
+}
+
+body {
+    /* Sets the Kagi font on all pages */
+    font-family: "Kagi";
+    /* Sets the colour of all text to black */
+    color: white;
+}
+
+section.history,
+section.settings {
+    border-radius: var(--border-radius);
+    /* I like partly transparent modals, so here I have the background set to black with 60% opacity */
+    background-color: var(--body-bg-color-dark);
+    background-color: rgba(41, 41, 41, .6);
+    /* And a text colour of white for contrast */
+    color: var(--text-color-dark);
+    /* 
      * Here I am setting the settings and history modals to be a little bit larger than the default, 
      * as I feel like this space is more effectivly being utilized if done
      */
-        max-height: 90vh;
-        max-width: 2800px;
-        width: 99%;
-        /* Add a border around the modal */
-        border: 1px solid;
-        /* This just pushes the modal slightly away from the top, this gives some breathing room :) */
-        position: absolute;
-        top: 2vh;
-        &.nodisplay {
-            /* Here I initally hide section.history.nodisplay as well as section.settings.nodisplay, 
+    max-height: 90vh;
+    max-width: 2800px;
+    width: 99%;
+    /* Add a border around the modal */
+    border: 1px solid;
+    /* This just pushes the modal slightly away from the top, this gives some breathing room :) */
+    position: absolute;
+    top: 2vh;
+    &.nodisplay {
+        /* Here I initally hide section.history.nodisplay as well as section.settings.nodisplay, 
          * so that when the page loads we do not see the History and Settings modal until the user selects 
          * the button 
          */
-            visibility: hidden;
-            opacity: 0;
+        visibility: hidden;
+        opacity: 0;
+    }
+    .header {
+        .close {
+            &:focus {
+                /* Here I remove the default Outline around the close button in some modal windows */
+                outline: none;
+            }
+            &:hover {
+                /* Add a background colour */
+                background-color: var(--gray-middle);
+                /* and a border radius */
+                border-radius: var(--border-radius);
+            }
         }
-        .header {
-            .close {
-                &:focus {
-                    /* Here I remove the default Outline around the close button in some modal windows */
-                    outline: none;
-                }
+    }
+    &:not(.nodisplay) {
+        transition: opacity .8s;
+    }
+    &:is(.nodisplay) {
+        transition: opacity .2s;
+    }
+    .item.customCss {
+        input {
+            &[type=submit] {
                 &:hover {
-                    /* Add a background colour */
-                    background-color: var(--gray-middle);
-                    /* and a border radius */
-                    border-radius: var(--border-radius);
+                    /* Add a nice hover animation to the submit button in settings */
+                    background-color: var(--success);
+                }
+                &.saved {
+                    /* Once save is pressed change the background to a solid green */
+                    background-color: var(--success);
+                    border-color: var(--text-color-dark);
                 }
             }
+            /* Sets the border radius of input fields to be 8 points */
+            border-radius: var(--border-radius);
         }
-        &:not(.nodisplay) {
-            transition: opacity .8s;
+        textarea {
+            /* This is just to make the text area larger, the default size is a but small for my likes */
+            height: 20rem;
+            /* Set the background colour of the textarea element in the settings to be black with an opacity of 10% */
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, .1);
+            /* Border radius to 12 point :) */
+            border-radius: var(--border-radius);
         }
-        &:is(.nodisplay) {
-            transition: opacity .2s;
-        }
-        .item.customCss {
-            input {
-                &[type=submit] {
-                    &:hover {
-                        /* Add a nice hover animation to the submit button in settings */
-                        background-color: var(--success);
-                    }
-                    &.saved {
-                        /* Once save is pressed change the background to a solid green */
-                        background-color: var(--success);
-                        border-color: var(--text-color-dark);
-                    }
-                }
-                /* Sets the border radius of input fields to be 8 points */
-                border-radius: var(--border-radius);
-            }
-            textarea {
-                /* This is just to make the text area larger, the default size is a but small for my likes */
-                height: 20rem;
-                /* Set the background colour of the textarea element in the settings to be black with an opacity of 10% */
-                background-color: rgb(0, 0, 0);
-                background-color: rgba(0, 0, 0, .1);
-                /* Border radius to 12 point :) */
-                border-radius: var(--border-radius);
+    }
+    .item {
+        .switch {
+            .box {
+                /* This sets the background colour as well as the border colour of the check-box in settings to be white */
+                background-color: var(--body-bg-color-light);
+                border-color: var(--body-bg-color-light);
             }
         }
-        .item {
+        &.on {
             .switch {
                 .box {
                     /* This sets the background colour as well as the border colour of the check-box in settings to be white */
-                    background-color: var(--body-bg-color-light);
+                    background-color: rgba(0, 0, 0, 0);
                     border-color: var(--body-bg-color-light);
                 }
             }
-            &.on {
-                .switch {
-                    .box {
-                        /* This sets the background colour as well as the border colour of the check-box in settings to be white */
-                        background-color: rgba(0, 0, 0, 0);
-                        border-color: var(--body-bg-color-light);
-                    }
-                }
-            }
         }
     }
-    
-    .theme-bg {
-        /* Sets the background color of the page to a nice white colour */
-        background-color: var(--body-bg-color-light);
-    }
-    
-    section {
-        &.main {
-            &.blur {
-                /* When the modal is open we want the section.main to blur */
-                filter: blur(3px);
-            }
+}
+
+.theme-bg {
+    /* Sets the background color of the page to a nice white colour */
+    background-color: var(--body-bg-color-light);
+}
+
+section {
+    &.main {
+        &.blur {
+            /* When the modal is open we want the section.main to blur */
+            filter: blur(3px);
         }
     }
-    
-    .button {
-        /* Changes the mouse pointer on .button so that it behaves similarly to a hyperlink */
-        cursor: pointer;
-        /* Add 10px of padding */
-        padding: 10px;
-        /* Use a monospace font here */
-        font-family: monospace;
+}
+
+.button {
+    /* Changes the mouse pointer on .button so that it behaves similarly to a hyperlink */
+    cursor: pointer;
+    /* Add 10px of padding */
+    padding: 10px;
+    /* Use a monospace font here */
+    font-family: monospace;
+}
+
+
+/* Hi */
+
+.button:hover {
+    /* Here I am setting the outline colour of the buttons to black on hover */
+    outline: 1px solid;
+    border-radius: var(--border-radius);
+}
+
+.button,
+button,
+.close {
+    /* Set the border radius */
+    border-radius: var(--border-radius);
+}
+
+svg>g {
+    fill: var(--body-bg-color-dark);
+}
+
+.flex {
+    /* Set .flex to be visible and centred */
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nodisplay {
+    /* Hide any elemnt with the class nodisplay */
+    visibility: hidden;
+    pointer-events: none;
+}
+
+body.dark ::selection,
+body.light ::selection {
+    background: var(--teal);
+    color: var(--text-color-light)
+}
+
+section.bar #lastEdited {
+    border-bottom-right-radius: 8pt;
+    border-top-right-radius: 8pt;
+    background-color: var(--primary);
+}
+
+.markdown-body {
+    h1 {
+        font-size: 28pt;
+        padding: 8pt;
+        padding-bottom: 2pt;
+        margin-bottom: 0;
+        padding-left: 0;
+        margin-top: 2pt;
     }
-    /* Hi */
-    
-    .button:hover {
-        /* Here I am setting the outline colour of the buttons to black on hover */
-        outline: 1px solid;
-        border-radius: var(--border-radius);
+    h2 {
+        font-size: 24pt;
+        padding: 8pt;
+        padding-bottom: 4pt;
+        margin-bottom: 2pt;
+        padding-left: 0;
+        margin-top: 0;
     }
-    
-    .button,
-    button,
-    .close {
-        /* Set the border radius */
-        border-radius: var(--border-radius);
+    h3 {
+        font-size: 20pt;
+        padding: 6pt;
+        padding-bottom: 2pt;
+        margin-bottom: 0;
+        padding-left: 0;
+        margin-top: 0;
     }
-    
-    svg>g {
-        fill: var(--body-bg-color-dark);
+    h4 {
+        font-size: 18pt;
+        padding: 4pt;
+        padding-bottom: 1pt;
+        margin-bottom: 0;
+        padding-left: 0;
+        margin-top: 0;
     }
-    
-    .flex {
-        /* Set .flex to be visible and centred */
-        visibility: visible;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    h5 {
+        font-size: 14pt;
+        padding: 2pt;
+        padding-bottom: 1pt;
+        margin-bottom: 0;
+        padding-left: 0;
+        margin-top: 0;
     }
-    
-    .nodisplay {
-        /* Hide any elemnt with the class nodisplay */
-        visibility: hidden;
-        pointer-events: none;
+    h6 {
+        font-size: 10pt;
+        padding: 1pt;
+        padding-bottom: 0pt;
+        margin-bottom: 0;
+        padding-left: 0;
+        margin-top: 0;
     }
-    
-    body.dark ::selection,
-    body.light ::selection {
-        background: var(--teal);
-        color: var(--text-color-light)
+}
+
+.markdown-body {
+    p {
+        margin-bottom: .2rem;
     }
-    
-    section.bar #lastEdited {
-        border-bottom-right-radius: 8pt;
-        border-top-right-radius: 8pt;
-        background-color: var(--primary);
-    }
-    
-    .markdown-body {
-        h1 {
-            font-size: 28pt;
-            padding: 8pt;
-            padding-bottom: 2pt;
-            margin-bottom: 0;
-            padding-left: 0;
-            margin-top: 2pt;
+    blockquote {
+        /* Wuotes */
+        background: #f9f9f9;
+        border-left: 8px solid #aaaaaa;
+        margin: 1.5em 10px;
+        padding: .5em 10px;
+        quotes: "\201C""\201D""\2018""\2019";
+        &:before {
+            /* HERE COMES THE GRAY, DOO DUH DEE DOUGH */
+            color: #ccc;
+            content: open-quote;
+            font-size: 4em;
+            line-height: .1em;
+            margin-right: .1em;
+            vertical-align: -.4em;
         }
-        h2 {
-            font-size: 24pt;
-            padding: 8pt;
-            padding-bottom: 4pt;
-            margin-bottom: 2pt;
-            padding-left: 0;
-            margin-top: 0;
-        }
-        h3 {
-            font-size: 20pt;
-            padding: 6pt;
-            padding-bottom: 2pt;
-            margin-bottom: 0;
-            padding-left: 0;
-            margin-top: 0;
-        }
-        h4 {
-            font-size: 18pt;
-            padding: 4pt;
-            padding-bottom: 1pt;
-            margin-bottom: 0;
-            padding-left: 0;
-            margin-top: 0;
-        }
-        h5 {
-            font-size: 14pt;
-            padding: 2pt;
-            padding-bottom: 1pt;
-            margin-bottom: 0;
-            padding-left: 0;
-            margin-top: 0;
-        }
-        h6 {
-            font-size: 10pt;
-            padding: 1pt;
-            padding-bottom: 0pt;
-            margin-bottom: 0;
-            padding-left: 0;
-            margin-top: 0;
-        }
-    }
-    
-    .markdown-body {
         p {
-            margin-bottom: .2rem;
+            /* Display block? What is that? Display inline? Aww yeah! */
+            display: inline;
         }
-        blockquote {
-            /* Wuotes */
-            background: #f9f9f9;
-            border-left: 8px solid #aaaaaa;
-            margin: 1.5em 10px;
-            padding: .5em 10px;
-            quotes: "\201C""\201D""\2018""\2019";
+    }
+    ol {
+        /* RESET I SAY */
+        counter-reset: li;
+        &>li {
+            /* Create a positioning context */
+            position: relative;
+            /* Give each list item a left margin to make room for the numbers */
+            margin: 0 0 6px 2em;
+            /* Add some spacing around the content */
+            padding: 4px 8px;
+            /* Disable the normal item numbering */
+            list-style: none;
             &:before {
-                /* HERE COMES THE GRAY, DOO DUH DEE DOUGH */
-                color: #ccc;
-                content: open-quote;
-                font-size: 4em;
-                line-height: .1em;
-                margin-right: .1em;
-                vertical-align: -.4em;
-            }
-            p {
-                /* Display block? What is that? Display inline? Aww yeah! */
-                display: inline;
-            }
-        }
-        ol {
-            /* RESET I SAY */
-            counter-reset: li;
-            &>li {
-                /* Create a positioning context */
-                position: relative;
-                /* Give each list item a left margin to make room for the numbers */
-                margin: 0 0 6px 2em;
-                /* Add some spacing around the content */
-                padding: 4px 8px;
-                /* Disable the normal item numbering */
-                list-style: none;
-                &:before {
-                    /* Use the counter as content */
-                    content: counter(li) ") ";
-                    /* Increment the counter by 1 */
-                    counter-increment: li;
-                    /* Position and style the number */
-                    position: absolute;
-                    top: 0;
-                    left: -1.2em;
-                    box-sizing: border-box;
-                    width: 2em;
-                    /* Some space between the number and the content in browsers that support
+                /* Use the counter as content */
+                content: counter(li) ") ";
+                /* Increment the counter by 1 */
+                counter-increment: li;
+                /* Position and style the number */
+                position: absolute;
+                top: 0;
+                left: -1.2em;
+                box-sizing: border-box;
+                width: 2em;
+                /* Some space between the number and the content in browsers that support
            generated content but not positioning it (Camino 2 is one example) */
-                    margin-right: 8px;
-                    padding: 4px;
-                    color: black;
-                    text-align: center;
-                }
-            }
-            li {
-                &:last-child {
-                    /* I don't like you margin at the bottom, stop insulting my last child in the list... */
-                    margin-bottom: 0;
-                }
+                margin-right: 8px;
+                padding: 4px;
+                color: black;
+                text-align: center;
             }
         }
         li {
-            ul,
-            ol {
-                /* Add a top margin */
-                margin-top: 6px;
+            &:last-child {
+                /* I don't like you margin at the bottom, stop insulting my last child in the list... */
+                margin-bottom: 0;
             }
         }
-        code {
-            /* We need code to look like itilics and   M o n o   S p a c e ,   r a w r */
-            font-family: monospace;
-            font-style: italic;
+    }
+    li {
+        ul,
+        ol {
+            /* Add a top margin */
+            margin-top: 6px;
         }
     }
-    
+    code {
+        /* We need code to look like itilics and   M o n o   S p a c e ,   r a w r */
+        font-family: monospace;
+        font-style: italic;
+    }
+}
+
+.markdown-body-container,
+textarea.theme-color {
+    /* Format the main textarea that holds our MARKDOWN **** WHOOOO!! */
+    background-color: rgb(240, 240, 240) !important;
+    background-color: rgba(240, 240, 240, 0.6) !important;
+    border-top-left-radius: 12pt !important;
+    border-top-right-radius: 12pt !important;
+    border: 2pt solid rgb(0, 0, 0) !important;
+    border: 2pt solid rgba(0, 0, 0, .6) !important;
+}
+
+textarea.theme-color {
+    /* Add padding to the textare */
+    padding-top: 2em !important;
+}
+
+section.main {
     .markdown-body-container,
-    textarea.theme-color {
-        /* Format the main textarea that holds our MARKDOWN **** WHOOOO!! */
-        background-color: rgb(240, 240, 240) !important;
-        background-color: rgba(240, 240, 240, 0.6) !important;
-        border-top-left-radius: 12pt !important;
-        border-top-right-radius: 12pt !important;
-        border: 2pt solid rgb(0, 0, 0) !important;
-        border: 2pt solid rgba(0, 0, 0, .6) !important;
+    textarea {
+        /* Umm, ya you know that section.main? Well... One issue,, it has really bad letter-boxing even on my laptop screen, and you know its bad when it is letter-boxed on this 13-inch screen size (I know, inches are bad but I am too lazy to use centimeters or whatever, rawr */
+        max-width: 2500pt;
+        width: 90vw;
+        margin: 3em;
+        padding: 0;
+        padding-left: 3em;
+        padding-bottom: 4em;
     }
-    
-    textarea.theme-color {
-        /* Add padding to the textare */
-        padding-top: 2em !important;
+    .markdown-body-container {
+        /* Move the main section up */
+        position: relative !important;
+        top: 40pt !important;
     }
-    
-    section.main {
-        .markdown-body-container,
-        textarea {
-            /* Umm, ya you know that section.main? Well... One issue,, it has really bad letter-boxing even on my laptop screen, and you know its bad when it is letter-boxed on this 13-inch screen size (I know, inches are bad but I am too lazy to use centimeters or whatever, rawr */
-            max-width: 2500pt;
-            width: 90vw;
-            margin: 3em;
-            padding: 0;
-            padding-left: 3em;
-            padding-bottom: 4em;
-        }
-        .markdown-body-container {
-            /* Move the main section up */
-            position: relative !important;
-            top: 40pt !important;
-        }
-        &:after {
-            /* Draw the ball :) */
-            display: block !important;
-            content: "" !important;
-            width: 40vw;
-            height: 60vw;
-            position: absolute !important;
-            top: 10vh !important;
-            left: calc(100vw - 26%) !important;
-            background: url("https://assets.kagi.com/img/about_page/boost-icons.png?v=d5dafde14251fd8b202e221f098da590d5faee52") 0px 0 no-repeat;
-            background-size: 1050% 200%;
-            z-index: -997 !important;
-            filter: blur(6pt);
+    &:after {
+        /* Draw the ball :) */
+        display: block !important;
+        content: "" !important;
+        width: 40vw;
+        height: 60vw;
+        position: absolute !important;
+        top: 10vh !important;
+        left: calc(100vw - 26%) !important;
+        background: url("https://assets.kagi.com/img/about_page/boost-icons.png?v=d5dafde14251fd8b202e221f098da590d5faee52") 0px 0 no-repeat;
+        background-size: 1050% 200%;
+        z-index: -997 !important;
+        filter: blur(6pt);
+    }
+}
+
+body.light {
+    .button {
+        &:hover {
+            /* Set the outline colour to white on hover of .button */
+            outline-color: #fff;
         }
     }
-    
-    body.light {
-        .button {
-            &:hover {
-                /* Set the outline colour to white on hover of .button */
-                outline-color: #fff;
-            }
-        }
-    }
-    
-    .theme-color,
-    .theme-color-light {
-        /* Set the text colour to white */
-        color: white !important;
-    }
-    
-    section.main>div.markdown-body-container div.markdown-body,
-    div.flex>div.modes>button,
-    div.flex>section.flex>textarea.theme-color,
-    select.theme-border,
-    textarea.theme-border {
-        /* For very specific elements I need the text colour to be black */
-        color: black !important;
-    }
+}
+
+.theme-color,
+.theme-color-light {
+    /* Set the text colour to white */
+    color: white !important;
+}
+
+section.main>div.markdown-body-container div.markdown-body,
+div.flex>div.modes>button,
+div.flex>section.flex>textarea.theme-color,
+select.theme-border,
+textarea.theme-border {
+    /* For very specific elements I need the text colour to be black */
+    color: black !important;
+}
