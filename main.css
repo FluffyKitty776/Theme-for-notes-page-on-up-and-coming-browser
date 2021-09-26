@@ -71,17 +71,106 @@ body {
   color: white;
 }
 
+section.history,
+section.settings {
+  border-radius: var(--border-radius);
+  /* I like partly transparent modals, so here I have the background set to black with 60% opacity */
+  background-color: var(--body-bg-color-dark);
+  background-color: rgba(41, 41, 41, 0.6);
+  /* And a text colour of white for contrast */
+  color: var(--text-color-dark);
+  /* 
+     * Here I am setting the settings and history modals to be a little bit larger than the default, 
+     * as I feel like this space is more effectivly being utilized if done
+     */
+  max-height: 90vh;
+  max-width: 2800px;
+  width: 99%;
+  /* Add a border around the modal */
+  border: 1px solid;
+  /* This just pushes the modal slightly away from the top, this gives some breathing room :) */
+  position: absolute;
+  top: 2vh;
+}
+
 section.history.nodisplay,
 section.settings.nodisplay {
   /* Here I initally hide section.history.nodisplay as well as section.settings.nodisplay, 
-     * so that when the page loads we do not see the History and Settings modal until the user selects 
-     * the button 
-     */
+         * so that when the page loads we do not see the History and Settings modal until the user selects 
+         * the button 
+         */
   visibility: hidden;
   opacity: 0;
 }
 
-.theme-bg,
+section.history .header .close:focus,
+section.settings .header .close:focus {
+  /* Here I remove the default Outline around the close button in some modal windows */
+  outline: none;
+}
+
+section.history .header .close:hover,
+section.settings .header .close:hover {
+  /* Add a background colour */
+  background-color: var(--gray-middle);
+  /* and a border radius */
+  border-radius: var(--border-radius);
+}
+
+section.history:not(.nodisplay),
+section.settings:not(.nodisplay) {
+  transition: opacity .8s;
+}
+
+section.history:is(.nodisplay),
+section.settings:is(.nodisplay) {
+  transition: opacity .2s;
+}
+
+section.history .item.customCss input,
+section.settings .item.customCss input {
+  /* Sets the border radius of input fields to be 8 points */
+  border-radius: var(--border-radius);
+}
+
+section.history .item.customCss input[type=submit]:hover,
+section.settings .item.customCss input[type=submit]:hover {
+  /* Add a nice hover animation to the submit button in settings */
+  background-color: var(--success);
+}
+
+section.history .item.customCss input[type=submit].saved,
+section.settings .item.customCss input[type=submit].saved {
+  /* Once save is pressed change the background to a solid green */
+  background-color: var(--success);
+  border-color: var(--text-color-dark);
+}
+
+section.history .item.customCss textarea,
+section.settings .item.customCss textarea {
+  /* This is just to make the text area larger, the default size is a but small for my likes */
+  height: 20rem;
+  /* Set the background colour of the textarea element in the settings to be black with an opacity of 10% */
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.1);
+  /* Border radius to 12 point :) */
+  border-radius: var(--border-radius);
+}
+
+section.history .item .switch .box,
+section.settings .item .switch .box {
+  /* This sets the background colour as well as the border colour of the check-box in settings to be white */
+  background-color: var(--body-bg-color-light);
+  border-color: var(--body-bg-color-light);
+}
+
+section.history .item.on .switch .box,
+section.settings .item.on .switch .box {
+  /* This sets the background colour as well as the border colour of the check-box in settings to be white */
+  background-color: transparent;
+  border-color: var(--body-bg-color-light);
+}
+
 .theme-bg {
   /* Sets the background color of the page to a nice white colour */
   background-color: var(--body-bg-color-light);
@@ -115,77 +204,6 @@ button,
   border-radius: var(--border-radius);
 }
 
-section.history .header .close:focus,
-section.settings .header .close:focus {
-  /* Here I remove the default Outline around the close button in some modal windows */
-  outline: none;
-}
-
-section.history .header .close:hover,
-section.settings .header .close:hover {
-  /* Add a background colour */
-  background-color: var(--gray-middle);
-  /* and a border radius */
-  border-radius: var(--border-radius);
-}
-
-section.history,
-section.settings {
-  border-radius: var(--border-radius);
-  /* I like partly transparent modals, so here I have the background set to black with 60% opacity */
-  background-color: var(--body-bg-color-dark);
-  background-color: rgba(41, 41, 41, 0.6);
-  /* And a text colour of white for contrast */
-  color: var(--text-color-dark);
-  /* 
-     * Here I am setting the settings and history modals to be a little bit larger than the default, 
-     * as I feel like this space is more effectivly being utilized if done
-     */
-  max-height: 90vh;
-  max-width: 2800px;
-  width: 99%;
-  /* Add a border around the modal */
-  border: 1px solid;
-  /* This just pushes the modal slightly away from the top, this gives some breathing room :) */
-  position: absolute;
-  top: 2vh;
-}
-
-section.settings:not(.nodisplay),
-section.history:not(.nodisplay) {
-  transition: opacity .8s;
-}
-
-section.settings:is(.nodisplay),
-section.history:is(.nodisplay) {
-  transition: opacity .2s;
-}
-
-section.settings .item.customCss input {
-  /* Sets the border radius of input fields to be 8 points */
-  border-radius: var(--border-radius);
-}
-
-section.settings .item.customCss textarea {
-  /* Set the background colour of the textarea element in the settings to be black with an opacity of 10% */
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.1);
-  /* Border radius to 12 point :) */
-  border-radius: var(--border-radius);
-}
-
-section.settings .item .switch .box {
-  /* This sets the background colour as well as the border colour of the check-box in settings to be white */
-  background-color: var(--body-bg-color-light);
-  border-color: var(--body-bg-color-light);
-}
-
-section.settings .item.on .switch .box {
-  /* This sets the background colour as well as the border colour of the check-box in settings to be white */
-  background-color: transparent;
-  border-color: var(--body-bg-color-light);
-}
-
 svg > g {
   fill: var(--body-bg-color-dark);
 }
@@ -202,22 +220,6 @@ svg > g {
   /* Hide any elemnt with the class nodisplay */
   visibility: hidden;
   pointer-events: none;
-}
-
-section.settings .item.customCss input[type=submit]:hover {
-  /* Add a nice hover animation to the submit button in settings */
-  background-color: var(--success);
-}
-
-section.settings .item.customCss input[type=submit].saved {
-  /* Once save is pressed change the background to a solid green */
-  background-color: var(--success);
-  border-color: var(--text-color-dark);
-}
-
-section.settings .item.customCss textarea {
-  /* This is just to make the text area larger, the default size is a but small for my likes */
-  height: 20rem;
 }
 
 body.dark ::selection,
@@ -291,6 +293,7 @@ section.bar #lastEdited {
 }
 
 .markdown-body blockquote {
+  /* Wuotes */
   background: #f9f9f9;
   border-left: 8px solid #aaaaaa;
   margin: 1.5em 10px;
@@ -299,6 +302,7 @@ section.bar #lastEdited {
 }
 
 .markdown-body blockquote:before {
+  /* HERE COMES THE GRAY, DOO DUH DEE DOUGH */
   color: #ccc;
   content: open-quote;
   font-size: 4em;
@@ -308,10 +312,12 @@ section.bar #lastEdited {
 }
 
 .markdown-body blockquote p {
+  /* Display block? What is that? Display inline? Aww yeah! */
   display: inline;
 }
 
 .markdown-body ol {
+  /* RESET I SAY */
   counter-reset: li;
 }
 
@@ -338,38 +344,33 @@ section.bar #lastEdited {
   box-sizing: border-box;
   width: 2em;
   /* Some space between the number and the content in browsers that support
-       generated content but not positioning it (Camino 2 is one example) */
+           generated content but not positioning it (Camino 2 is one example) */
   margin-right: 8px;
   padding: 4px;
   color: black;
   text-align: center;
 }
 
-.markdown-body li ol,
-.markdown-body li ul {
-  margin-top: 6px;
-}
-
-.markdown-body ol ol li:last-child {
+.markdown-body ol li:last-child {
+  /* I don't like you margin at the bottom, stop insulting my last child in the list... */
   margin-bottom: 0;
 }
 
-.markdown-body code {
-  font-style: italic;
+.markdown-body li ul,
+.markdown-body li ol {
+  /* Add a top margin */
+  margin-top: 6px;
 }
 
-section.main .markdown-body-container,
-section.main textarea {
-  max-width: 2500pt;
-  width: 90vw;
-  margin: 3em;
-  padding: 0;
-  padding-left: 3em;
-  padding-bottom: 4em;
+.markdown-body code {
+  /* We need code to look like itilics and   M o n o   S p a c e ,   r a w r */
+  font-family: monospace;
+  font-style: italic;
 }
 
 .markdown-body-container,
 textarea.theme-color {
+  /* Format the main textarea that holds our MARKDOWN **** WHOOOO!! */
   background-color: #f0f0f0 !important;
   background-color: rgba(240, 240, 240, 0.6) !important;
   border-top-left-radius: 12pt !important;
@@ -383,12 +384,25 @@ textarea.theme-color {
   padding-top: 2em !important;
 }
 
+section.main .markdown-body-container,
+section.main textarea {
+  /* Umm, ya you know that section.main? Well... One issue,, it has really bad letter-boxing even on my laptop screen, and you know its bad when it is letter-boxed on this 13-inch screen size (I know, inches are bad but I am too lazy to use centimeters or whatever, rawr */
+  max-width: 2500pt;
+  width: 90vw;
+  margin: 3em;
+  padding: 0;
+  padding-left: 3em;
+  padding-bottom: 4em;
+}
+
 section.main .markdown-body-container {
+  /* Move the main section up */
   position: relative !important;
   top: 40pt !important;
 }
 
 section.main:after {
+  /* Draw the ball :) */
   display: block !important;
   content: "" !important;
   width: 40vw;
